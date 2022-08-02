@@ -2,9 +2,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`classicmodels` /*!40100 DEFAULT CHARACT
 
 USE `classicmodels`;
 
-/*Table structure for table `customers` */
-
-
 /*Table structure for table `offices` */
 
 DROP TABLE IF EXISTS `offices`;
@@ -22,6 +19,7 @@ CREATE TABLE `offices` (
   PRIMARY KEY (`officeCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 /*Table structure for table `productlines` */
 
 DROP TABLE IF EXISTS `productlines`;
@@ -33,8 +31,6 @@ CREATE TABLE `productlines` (
   `image` mediumblob,
   PRIMARY KEY (`productLine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 
 
 /*Table structure for table `employees` */
@@ -57,6 +53,10 @@ CREATE TABLE `employees` (
   CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`officeCode`) REFERENCES `offices` (`officeCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+
+/*Table structure for table `customers` */
+
 DROP TABLE IF EXISTS `customers`;
 
 CREATE TABLE `customers` (
@@ -77,6 +77,7 @@ CREATE TABLE `customers` (
   KEY `salesRepEmployeeNumber` (`salesRepEmployeeNumber`),
   CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`salesRepEmployeeNumber`) REFERENCES `employees` (`employeeNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 /*Table structure for table `payments` */
 
@@ -110,6 +111,8 @@ CREATE TABLE `products` (
   KEY `productLine` (`productLine`),
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`productLine`) REFERENCES `productlines` (`productLine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 /*Table structure for table `orders` */
 
 DROP TABLE IF EXISTS `orders`;
@@ -126,6 +129,7 @@ CREATE TABLE `orders` (
   KEY `customerNumber` (`customerNumber`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerNumber`) REFERENCES `customers` (`customerNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 /*Table structure for table `orderdetails` */
 
